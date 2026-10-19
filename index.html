@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="stili.css" />
@@ -17,10 +17,36 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23f3f0ea' width='64' height='64'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Georgia' fill='%236a7048'%3EE%3C/text%3E%3C/svg%3E"
     />
   </head>
-  <body class="is-envelope">
+  <body class="is-intro">
     <div class="grain" aria-hidden="true"></div>
 
-    <main id="festa">
+    <section class="hyrje" id="hyrje">
+      <div class="shirit" aria-hidden="true"></div>
+      <img class="gjeth" src="foto/gjeth.png" alt="" />
+      <div class="hyrje-qender">
+        <p class="kicker">Na takoni në</p>
+        <h1 class="shkrim" id="vendiHyrje"></h1>
+        <button class="play" id="play" type="button" aria-label="Hap ftesën">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="34,18 34,82 84,50" fill="#ffffff" />
+          </svg>
+        </button>
+        <p class="rresht-data" id="dataHyrje"></p>
+        <p class="rresht-ora" id="oraHyrje"></p>
+        <p class="kicker kicker-pas">Ftesa zyrtare pason</p>
+      </div>
+      <div class="numeratori" aria-hidden="true">
+        <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
+      </div>
+    </section>
+
+    <main id="festa" hidden>
       <section class="skena" id="skena" data-state="closed">
         <div class="xhep">
           <svg class="palosjet" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -50,7 +76,8 @@
         </div>
 
         <div class="kapak" id="kapak">
-          <svg class="dantel-svg" id="dantelSvg" aria-hidden="true"></svg>
+          <img class="dantel-rrip dantel-majte" src="foto/dantel.png" alt="" />
+          <img class="dantel-rrip dantel-djathte" src="foto/dantel.png" alt="" />
           <div class="leter">
             <p class="kicker kicker-zarf">Një letër dashurie nga</p>
             <p class="shkrim shkrim-zarf" id="emratLeter"></p>
@@ -82,21 +109,7 @@
 
         <div class="kompozim" id="kompozim" aria-hidden="true">
           <div class="kompozim-brenda">
-            <svg class="bozhure" viewBox="0 0 220 460" aria-hidden="true">
-              <g fill="none" stroke="#cfc4b2" stroke-width="1.7" stroke-linecap="round">
-                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(0 112 92)" />
-                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(36 112 92)" />
-                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(72 112 92)" />
-                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(108 112 92)" />
-                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(144 112 92)" />
-                <circle cx="112" cy="92" r="10" />
-                <circle cx="112" cy="92" r="4" />
-                <path d="M112 132 C108 200 118 280 104 430" />
-                <path d="M110 210 C70 188 42 206 52 232 C78 214 100 222 110 214" />
-                <path d="M108 250 C64 246 40 274 58 292 C82 270 102 272 110 258" />
-                <path d="M112 300 C156 286 186 314 172 338 C146 314 124 316 112 304" />
-              </g>
-            </svg>
+            <img class="bozhure" src="foto/bozhure.png" alt="" />
 
             <div class="kornize">
               <div class="kornize-brenda">
@@ -135,52 +148,7 @@
               <span id="dataZemer"></span>
             </div>
 
-            <svg class="lule" viewBox="0 0 340 300" aria-hidden="true">
-              <g fill="none" stroke="#3e4a30" stroke-width="1.4" stroke-linecap="round">
-                <path d="M250 290 C246 220 270 170 250 120" />
-                <path d="M180 290 C176 230 150 180 168 130" />
-                <path d="M120 290 C130 230 100 190 112 150" />
-                <path d="M80 290 C70 240 96 200 84 160" />
-              </g>
-              <g fill="#31502e">
-                <ellipse cx="236" cy="176" rx="16" ry="7" transform="rotate(-28 236 176)" />
-                <ellipse cx="268" cy="150" rx="18" ry="7" transform="rotate(24 268 150)" />
-                <ellipse cx="146" cy="188" rx="16" ry="6" transform="rotate(30 146 188)" />
-                <ellipse cx="98" cy="206" rx="15" ry="6" transform="rotate(-36 98 206)" />
-              </g>
-              <path d="M168 150 C168 96 132 62 146 34 C176 62 206 96 196 156 Z" fill="#f7f4ef" />
-              <path d="M172 150 C174 96 168 62 162 38" fill="none" stroke="#e2d3a8" stroke-width="2" />
-              <path d="M250 148 C250 92 214 58 228 30 C258 58 292 98 278 154 Z" fill="#fbfaf7" />
-              <path d="M254 146 C256 96 250 64 244 40" fill="none" stroke="#e7d7ad" stroke-width="2" />
-              <path
-                d="M86 168 C86 140 118 128 132 148 C148 168 132 196 108 196 C84 196 74 180 86 168 Z"
-                fill="#722333"
-              />
-              <ellipse cx="112" cy="162" rx="4" ry="14" transform="rotate(-18 112 162)" fill="#e6c56a" />
-              <g fill="#f7f4ef" stroke="#e4d8c4" stroke-width="1">
-                <circle cx="70" cy="168" r="11" />
-                <circle cx="58" cy="184" r="9" />
-                <circle cx="84" cy="186" r="8" />
-                <circle cx="196" cy="196" r="10" />
-                <circle cx="214" cy="208" r="8" />
-                <circle cx="182" cy="210" r="7" />
-              </g>
-              <g fill="#e6c56a">
-                <circle cx="70" cy="168" r="2.4" />
-                <circle cx="58" cy="184" r="2" />
-                <circle cx="84" cy="186" r="1.8" />
-                <circle cx="196" cy="196" r="2.2" />
-                <circle cx="214" cy="208" r="1.8" />
-              </g>
-              <g fill="#9aab72">
-                <circle cx="40" cy="210" r="3" />
-                <circle cx="48" cy="198" r="2.2" />
-                <circle cx="230" cy="176" r="2.4" />
-                <circle cx="300" cy="150" r="2.6" />
-                <circle cx="286" cy="168" r="2" />
-                <circle cx="140" cy="150" r="2.2" />
-              </g>
-            </svg>
+            <img class="lule" src="foto/lulet.png" alt="" />
           </div>
         </div>
       </section>
@@ -261,7 +229,7 @@
             </div>
             <p class="emrat-poshte" id="emratPoshte"></p>
             <p class="data-poshte" id="dataPoshte"></p>
-            <button class="kthehu" id="kthehu" type="button">Kthehu te zarfi</button>
+            <button class="kthehu" id="kthehu" type="button">Kthehu te ftesa</button>
           </div>
         </div>
       </section>

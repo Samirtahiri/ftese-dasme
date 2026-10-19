@@ -50,12 +50,15 @@
   document.getElementById("inic1").textContent = inicN;
   document.getElementById("inic2").textContent = inicD;
   document.getElementById("vendi").textContent = cfg.vendi;
+  document.getElementById("vendiHyrje").textContent = cfg.vendi;
   document.getElementById("oraRresht").textContent = cfg.oraTekst.toLocaleUpperCase("sq-AL");
+  document.getElementById("oraHyrje").textContent = cfg.oraTekst.toLocaleUpperCase("sq-AL");
 
   if (dataOK) {
     const rresht = `${dite[data.getDay()]}, ${data.getDate()} ${muaj[data.getMonth()]} ${data.getFullYear()}`;
     const rreshtMadh = rresht.toLocaleUpperCase("sq-AL");
     document.getElementById("dataRresht").textContent = rreshtMadh;
+    document.getElementById("dataHyrje").textContent = rreshtMadh;
     const dd = String(data.getDate()).padStart(2, "0");
     const mm = String(data.getMonth() + 1).padStart(2, "0");
     document.getElementById("dataZemer").textContent = `${dd}.${mm}.${data.getFullYear()}`;
@@ -96,54 +99,32 @@
 
   function vendosDantellen() {
     const kapak = document.getElementById("kapak");
-    const svg = document.getElementById("dantelSvg");
     const w = kapak.clientWidth;
     const h = kapak.clientHeight;
-    if (!w || !h || !svg) return;
-    const cx = w / 2;
-    const cy = h * 0.36;
-    const anet = [
-      [8, 6, w / 2, h - 4],
-      [w - 8, 6, w / 2, h - 4],
-    ];
-    const pjeset = [];
-    anet.forEach(([x1, y1, x2, y2]) => {
-      const dx = x2 - x1;
-      const dy = y2 - y1;
-      const len = Math.hypot(dx, dy) || 1;
-      let nx = -dy / len;
-      let ny = dx / len;
-      const mx = (x1 + x2) / 2;
-      const my = (y1 + y2) / 2;
-      if ((cx - mx) * nx + (cy - my) * ny < 0) {
-        nx = -nx;
-        ny = -ny;
-      }
-      const futje = 16;
-      const sx1 = x1 + nx * futje;
-      const sy1 = y1 + ny * futje;
-      const sx2 = x2 + nx * futje;
-      const sy2 = y2 + ny * futje;
-      pjeset.push(
-        `<line x1="${sx1.toFixed(1)}" y1="${sy1.toFixed(1)}" x2="${sx2.toFixed(1)}" y2="${sy2.toFixed(1)}" stroke="#3a3f28" stroke-width="8" stroke-linecap="round" opacity="0.45"/>`
-      );
-      pjeset.push(
-        `<line x1="${(sx1 + nx * 9).toFixed(1)}" y1="${(sy1 + ny * 9).toFixed(1)}" x2="${(sx2 + nx * 9).toFixed(1)}" y2="${(sy2 + ny * 9).toFixed(1)}" stroke="#2e331f" stroke-width="1.15" opacity="0.75"/>`
-      );
-      for (let d = 20; d < len - 28; d += 16) {
-        const t = d / len;
-        const px = sx1 + (sx2 - sx1) * t;
-        const py = sy1 + (sy2 - sy1) * t;
-        pjeset.push(
-          `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3.4" fill="none" stroke="#2c311e" stroke-width="1.15"/>`
-        );
-        pjeset.push(
-          `<circle cx="${(px + nx * 8).toFixed(1)}" cy="${(py + ny * 8).toFixed(1)}" r="1.35" fill="#2c311e" opacity="0.8"/>`
-        );
-      }
-    });
-    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-    svg.innerHTML = pjeset.join("");
+    if (!w || !h) return;
+    const len = Math.hypot(w / 2, h);
+    const angle = (Math.atan2(h, w / 2) * 180) / Math.PI;
+    const majtas = document.querySelector(".dantel-majte");
+    const djathtas = document.querySelector(".dantel-djathte");
+    majtas.style.width = `${len}px`;
+    djathtas.style.width = `${len}px`;
+    const brenda = Math.round(Math.min(56, Math.max(22, h * 0.09)));
+    majtas.style.transform = `rotate(${angle}deg) translateY(${-brenda}px)`;
+    djathtas.style.transform = `rotate(${-angle}deg) translateY(${-brenda}px)`;
+    pershtatEmrat();
+  }
+
+  function pershtatEmrat() {
+    const el = document.getElementById("emratLeter");
+    if (!el || !el.offsetParent) return;
+    const max = Math.min(window.innerWidth * 0.58, 520);
+    el.style.whiteSpace = "nowrap";
+    let size = Math.min(92, Math.max(30, window.innerWidth * 0.064));
+    el.style.fontSize = `${size}px`;
+    while (el.scrollWidth > max && size > 20) {
+      size -= 1;
+      el.style.fontSize = `${size}px`;
+    }
   }
 
   const skena = document.getElementById("skena");
@@ -163,6 +144,34 @@
     }, menjehere ? 0 : 140);
   }
 
+  const hyrje = document.getElementById("hyrje");
+  const festa = document.getElementById("festa");
+  let nisur = false;
+
+  function nisNgaPlay() {
+    if (nisur) return;
+    nisur = true;
+    document.getElementById("play").disabled = true;
+    festa.hidden = false;
+    vendosDantellen();
+    if (menjehere) {
+      hyrje.hidden = true;
+      document.body.classList.remove("is-intro");
+      document.body.classList.add("is-envelope");
+      hapZarfin();
+      return;
+    }
+    window.requestAnimationFrame(() => document.body.classList.add("po-largohet"));
+    window.setTimeout(() => {
+      hyrje.hidden = true;
+      document.body.classList.remove("is-intro", "po-largohet");
+      document.body.classList.add("is-envelope");
+      vendosDantellen();
+      window.setTimeout(hapZarfin, 700);
+    }, 700);
+  }
+
+  document.getElementById("play").addEventListener("click", nisNgaPlay);
   vula.addEventListener("click", (event) => {
     event.stopPropagation();
     hapZarfin();
