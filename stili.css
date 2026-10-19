@@ -1,0 +1,938 @@
+:root {
+  --krem: #f3f0ea;
+  --leter: #fcfbf8;
+  --bojë: #241f1a;
+  --ulliri: #6e7349;
+  --ulliri-erret: #5c6140;
+  --ulliri-hapur: #84895c;
+  --verdhë: #722333;
+  --hije: rgba(40, 34, 18, 0.16);
+  --maja: 54%;
+  --shkrim: "Cormorant Garamond", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--krem);
+  color: var(--bojë);
+  font-family: var(--shkrim);
+  overflow-x: hidden;
+}
+
+body.is-intro,
+body.is-envelope:not(.is-open) {
+  overflow: hidden;
+  height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ulliri);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: #ddd6c6;
+  color: var(--bojë);
+}
+
+.grain {
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.shkrim {
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(64px, 8vw, 108px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.hyrje {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.7), transparent 46%),
+    var(--krem);
+  transition: opacity 0.8s ease;
+}
+
+body.po-largohet .hyrje {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.shirit {
+  position: absolute;
+  top: 0;
+  left: 7%;
+  right: 7%;
+  height: 22px;
+  background: linear-gradient(180deg, #4e5334, #6a6f46);
+  border-radius: 0 0 6px 6px;
+}
+
+.gjeth {
+  position: absolute;
+  top: -8px;
+  right: max(16px, 5vw);
+  width: min(190px, 30vw);
+  height: auto;
+  pointer-events: none;
+}
+
+.hyrje-qender {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10vh 24px 2vh;
+}
+
+.hyrje-qender .shkrim {
+  margin-top: 8px;
+}
+
+.play {
+  width: 132px;
+  height: 112px;
+  margin: 6px 0 2px;
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.play svg {
+  width: 78px;
+  height: 78px;
+  filter: drop-shadow(0 8px 14px rgba(40, 36, 24, 0.16));
+  transition: transform 0.35s ease;
+}
+
+.play:hover svg,
+.play:focus-visible svg {
+  transform: scale(1.06);
+}
+
+.rresht-data,
+.rresht-ora,
+.rresht-salle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.rresht-data {
+  margin-top: 4px;
+}
+
+.rresht-ora,
+.rresht-salle {
+  margin-top: 10px;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+}
+
+.kicker-pas {
+  margin-top: 34px;
+}
+
+.numeratori {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 16px 7vh;
+}
+
+.njesi strong {
+  display: block;
+  min-width: 4.2ch;
+  text-align: center;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.njesi span {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.pika {
+  padding: 0 6px;
+  font-size: 30px;
+  line-height: 0.9;
+  font-style: normal;
+}
+
+.skena {
+  --maja: 54%;
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--krem);
+  perspective: 1800px;
+}
+
+.xhep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.14), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.18), transparent 46%),
+    linear-gradient(180deg, #7b8054 0%, #6a6f47 42%, #5e6340 100%);
+  clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 0 100%);
+  transition:
+    height 1.15s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
+    clip-path 1.15s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+  box-shadow: inset 0 0 80px rgba(40, 36, 16, 0.12);
+}
+
+.skena[data-state="open"] .xhep {
+  height: 46%;
+  clip-path: polygon(0 24%, 50% 0, 100% 24%, 100% 100%, 0 100%);
+}
+
+.palosjet {
+  display: none;
+}
+
+.skena[data-state="open"] .palosjet,
+.skena[data-state="open"] .hap-etikete {
+  opacity: 0;
+}
+
+.hap-etikete {
+  position: absolute;
+  top: calc(var(--maja) + 108px);
+  left: 16px;
+  right: 16px;
+  margin: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.kapak {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--maja);
+  z-index: 5;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.16), transparent 50%),
+    linear-gradient(180deg, #8b9064 0%, #74794e 68%, #686d45 100%);
+  transform-origin: center top;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transition: transform 1.15s cubic-bezier(0.55, 0.05, 0.25, 1), opacity 0.4s ease 0.72s;
+}
+
+.skena[data-state="open"] .kapak {
+  transform: rotateX(188deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.leter {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: min(640px, 86vw);
+}
+
+.kicker-zarf {
+  font-size: 12px;
+  letter-spacing: 0.38em;
+}
+
+.shkrim-zarf {
+  margin-top: 8px;
+  font-size: clamp(52px, 7vw, 84px);
+}
+
+.dantel-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.vula {
+  position: absolute;
+  top: var(--maja);
+  left: 50%;
+  z-index: 6;
+  width: 124px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translate(-50%, -42%);
+  filter: drop-shadow(0 12px 14px rgba(40, 36, 18, 0.28));
+  transition: transform 1.05s cubic-bezier(0.55, 0.05, 0.25, 1), opacity 0.35s ease 0.45s;
+}
+
+.vula svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.skena[data-state="open"] .vula {
+  transform: translate(-50%, -130%) scale(0.86);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kompozim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh 16px 0;
+  opacity: 0;
+  transform: translateY(42px);
+  pointer-events: none;
+  transition: opacity 0.95s ease 0.35s, transform 1.15s cubic-bezier(0.16, 0.84, 0.32, 1) 0.3s;
+}
+
+.skena[data-state="open"] .kompozim {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.kompozim-brenda {
+  position: relative;
+  width: min(980px, 96vw);
+  height: min(660px, 84vh);
+}
+
+.bozhure {
+  position: absolute;
+  left: -78px;
+  top: 96px;
+  width: 210px;
+  height: auto;
+  z-index: 5;
+  filter: drop-shadow(0 10px 8px rgba(80, 70, 40, 0.14));
+  pointer-events: none;
+}
+
+.kornize {
+  position: absolute;
+  left: 24px;
+  top: 54px;
+  width: 330px;
+  height: 440px;
+  z-index: 4;
+  padding: 12px;
+  border-radius: 50%;
+  background: #f7f4ee;
+  box-shadow:
+    0 0 0 1px #e4dccb,
+    0 18px 40px rgba(48, 40, 22, 0.14);
+}
+
+.kornize-brenda {
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 2px #e5dccb,
+    inset 0 0 0 10px #f7f4ee,
+    inset 0 0 0 11px #d9d0c0;
+}
+
+.kornize-brenda img,
+.monogram-foto {
+  width: 100%;
+  height: 100%;
+}
+
+.kornize-brenda img {
+  object-fit: cover;
+  display: block;
+}
+
+.monogram-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 38%, #3d4432, #1a1d15 72%);
+  color: #f4efe6;
+}
+
+.monogram-foto span {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 92px;
+  line-height: 0.8;
+}
+
+.monogram-foto span + span {
+  margin-left: -14px;
+}
+
+.karte {
+  position: absolute;
+  top: 28px;
+  left: 250px;
+  width: 500px;
+  min-height: 430px;
+  z-index: 3;
+}
+
+.vija {
+  position: absolute;
+  top: -16px;
+  right: -10px;
+  bottom: 28px;
+  left: 38%;
+  background: repeating-linear-gradient(90deg, #6a7048 0 8px, #f6f3ec 8px 17px);
+  border: 11px solid #6a7048;
+  z-index: 0;
+}
+
+.karte-brenda {
+  position: relative;
+  z-index: 1;
+  min-height: 430px;
+  margin-right: 34px;
+  padding: 52px 34px 78px 78px;
+  background: var(--leter);
+  text-align: center;
+  box-shadow: 0 18px 44px rgba(40, 36, 22, 0.1);
+}
+
+.ndares {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 18px;
+}
+
+.ndares span {
+  width: 42px;
+  height: 1px;
+  background: rgba(36, 31, 26, 0.55);
+}
+
+.ndares i {
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(36, 31, 26, 0.7);
+  transform: rotate(45deg);
+}
+
+.shkrim-karte {
+  font-size: clamp(42px, 4.4vw, 60px);
+}
+
+.amp {
+  margin: 2px 0;
+  font-style: italic;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.zemer {
+  position: absolute;
+  left: 392px;
+  bottom: -28px;
+  width: 196px;
+  height: 184px;
+  z-index: 6;
+  filter: drop-shadow(0 12px 16px rgba(70, 16, 28, 0.22));
+}
+
+.zemer svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zemer span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  color: #f7f1ea;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+}
+
+.lule {
+  position: absolute;
+  right: -28px;
+  bottom: -36px;
+  width: min(390px, 40vw);
+  height: auto;
+  z-index: 6;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 12px rgba(40, 36, 20, 0.12));
+}
+
+.mbledhja-krem {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.65), transparent 50%),
+    var(--krem);
+  text-align: center;
+  padding: 86px 20px 92px;
+}
+
+.numeratori-vogel {
+  padding: 0 0 54px;
+}
+
+.numeratori-vogel .njesi strong {
+  font-size: 28px;
+}
+
+.buton-adresa {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #74794d, #5d6240);
+  color: #f6f3ea;
+  padding: 22px 54px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 28px rgba(60, 58, 28, 0.16);
+}
+
+.buton-adresa:hover {
+  filter: brightness(1.06);
+}
+
+.sebashku {
+  max-width: 18em;
+  margin: 58px auto 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.dashuri {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  color: #f7f4ee;
+  padding: 78px 20px 56px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.16), transparent 36%),
+    linear-gradient(180deg, #b3a89c 0%, #7d736a 38%, #3c3834 100%);
+}
+
+.dashuri::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(20, 16, 12, 0.38) 100%);
+  pointer-events: none;
+}
+
+.kallinj {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.me-dashuri,
+.ovale,
+.pyetje,
+.kthehu {
+  position: relative;
+  z-index: 1;
+}
+
+.me-dashuri {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.ovale {
+  width: 210px;
+  height: 280px;
+  margin: 28px auto 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: inset 0 0 0 7px transparent, inset 0 0 0 8px rgba(255, 255, 255, 0.55);
+}
+
+.ovale-lule {
+  width: 74px;
+  height: 22px;
+}
+
+.ovale-emri {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 86px;
+  line-height: 0.75;
+}
+
+.ovale-emri span + span {
+  margin-left: -12px;
+}
+
+.pyetje {
+  max-width: 34em;
+  margin: 18px auto 0;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  line-height: 2;
+  text-transform: uppercase;
+}
+
+.pyetje a {
+  display: inline-block;
+  margin-top: 8px;
+  color: inherit;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  text-underline-offset: 4px;
+}
+
+.kthehu {
+  margin-top: 26px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.dialogu {
+  width: min(480px, calc(100% - 28px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  border: 0;
+  border-radius: 22px;
+  padding: 32px 28px 26px;
+  background: #f7f4ee;
+  color: var(--bojë);
+  box-shadow: 0 24px 80px rgba(20, 16, 10, 0.28);
+}
+
+.dialogu::backdrop {
+  background: rgba(28, 26, 20, 0.48);
+}
+
+.shkrim-dialog {
+  font-size: clamp(36px, 6vw, 48px);
+  margin: 8px 0 22px;
+}
+
+.dialogu label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dialogu input,
+.dialogu textarea {
+  border: 0;
+  border-bottom: 1px solid #d5ccbc;
+  background: transparent;
+  padding: 8px 2px 10px;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--bojë);
+  resize: vertical;
+}
+
+.dialogu input:focus,
+.dialogu textarea:focus {
+  outline: none;
+  border-bottom-color: var(--ulliri);
+}
+
+.veprime {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.anulo {
+  border: 0;
+  background: transparent;
+  color: var(--bojë);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.buton-vogel {
+  padding: 14px 26px;
+  font-size: 13px;
+}
+
+.faleminderit {
+  text-align: center;
+  padding: 12px 8px 6px;
+}
+
+.faleminderit-tekst {
+  margin: 0 0 22px;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  .shkrim {
+    font-size: clamp(54px, 14vw, 84px);
+  }
+
+  .rresht-data,
+  .rresht-ora,
+  .rresht-salle,
+  .kicker {
+    letter-spacing: 0.18em;
+  }
+
+  .rresht-data,
+  .rresht-ora {
+    font-size: 13px;
+  }
+
+  .njesi strong {
+    min-width: 3.4ch;
+    font-size: 26px;
+  }
+
+  .njesi span {
+    letter-spacing: 0.14em;
+    font-size: 10px;
+  }
+
+  .skena {
+    --maja: 50%;
+    min-height: 100vh;
+    height: 100vh;
+  }
+
+  .hap-etikete {
+    letter-spacing: 0.24em;
+    font-size: 12px;
+    top: calc(var(--maja) + 86px);
+  }
+
+  .shkrim-zarf {
+    font-size: clamp(44px, 12vw, 68px);
+  }
+
+  .skena[data-state="open"] {
+    height: auto;
+    overflow: visible;
+  }
+
+  .skena[data-state="open"] .xhep {
+    height: 120px;
+    clip-path: none;
+  }
+
+  .kompozim {
+    align-items: stretch;
+    padding: 28px 16px 0;
+  }
+
+  .skena[data-state="open"] .kompozim {
+    position: relative;
+  }
+
+  .kompozim-brenda {
+    width: min(460px, 100%);
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 168px;
+  }
+
+  .bozhure {
+    display: none;
+  }
+
+  .kornize,
+  .karte,
+  .zemer,
+  .lule {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .kornize {
+    width: min(260px, 74vw);
+    height: 330px;
+  }
+
+  .karte {
+    width: min(420px, 100%);
+    min-height: 0;
+  }
+
+  .karte-brenda {
+    min-height: 0;
+    margin-right: 22px;
+    padding: 36px 18px 42px;
+  }
+
+  .vija {
+    left: 28%;
+    bottom: 12px;
+  }
+
+  .zemer {
+    width: 168px;
+    height: 158px;
+    margin-top: -28px;
+  }
+
+  .zemer span {
+    font-size: 18px;
+  }
+
+  .lule {
+    width: min(250px, 70vw);
+    margin-top: -18px;
+  }
+
+  .buton-adresa {
+    padding: 18px 22px;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  .monogram-foto span,
+  .ovale-emri {
+    font-size: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f0ea" />
+    <title>Ftesë dasme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stili.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23f3f0ea' width='64' height='64'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Georgia' fill='%236a7048'%3EE%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body class="is-intro">
+    <div class="grain" aria-hidden="true"></div>
+
+    <section class="hyrje" id="hyrje">
+      <div class="shirit" aria-hidden="true"></div>
+      <svg class="gjeth" viewBox="0 0 220 520" aria-hidden="true">
+        <g fill="none" stroke-linecap="round">
+          <path d="M70 0 C78 70 58 130 74 210 C86 280 52 360 68 520" stroke="#7f8b58" stroke-width="1.4" />
+          <path d="M118 0 C112 80 132 150 118 240 C104 320 138 400 120 520" stroke="#6d784c" stroke-width="1.5" />
+          <path d="M164 0 C170 60 150 120 166 200 C178 270 150 340 162 460" stroke="#8b9664" stroke-width="1.3" />
+        </g>
+        <g fill="#8d9862">
+          <ellipse cx="86" cy="78" rx="6" ry="16" transform="rotate(18 86 78)" />
+          <ellipse cx="62" cy="128" rx="5" ry="14" transform="rotate(-24 62 128)" />
+          <ellipse cx="92" cy="188" rx="6" ry="15" transform="rotate(20 92 188)" />
+          <ellipse cx="60" cy="250" rx="5" ry="13" transform="rotate(-16 60 250)" />
+          <ellipse cx="138" cy="92" rx="6" ry="16" transform="rotate(-20 138 92)" />
+          <ellipse cx="148" cy="156" rx="5" ry="14" transform="rotate(22 148 156)" />
+          <ellipse cx="100" cy="214" rx="6" ry="15" transform="rotate(-18 100 214)" />
+          <ellipse cx="146" cy="286" rx="5" ry="14" transform="rotate(16 146 286)" />
+          <ellipse cx="176" cy="74" rx="5" ry="14" transform="rotate(24 176 74)" />
+          <ellipse cx="150" cy="132" rx="5" ry="13" transform="rotate(-14 150 132)" />
+          <ellipse cx="184" cy="188" rx="6" ry="15" transform="rotate(18 184 188)" />
+          <ellipse cx="148" cy="246" rx="5" ry="13" transform="rotate(-22 148 246)" />
+        </g>
+        <g fill="#6e7948">
+          <ellipse cx="78" cy="108" rx="4" ry="11" transform="rotate(40 78 108)" />
+          <ellipse cx="126" cy="124" rx="4" ry="12" transform="rotate(-36 126 124)" />
+          <ellipse cx="170" cy="118" rx="4" ry="11" transform="rotate(32 170 118)" />
+          <ellipse cx="108" cy="300" rx="4" ry="12" transform="rotate(28 108 300)" />
+          <ellipse cx="156" cy="330" rx="4" ry="11" transform="rotate(-30 156 330)" />
+        </g>
+      </svg>
+
+      <div class="hyrje-qender">
+        <p class="kicker">Na takoni në</p>
+        <h1 class="shkrim" id="vendi"></h1>
+        <button class="play" id="play" type="button" aria-label="Hap ftesën">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <polygon points="34,18 34,82 84,50" fill="#ffffff" />
+          </svg>
+        </button>
+        <p class="rresht-data" id="dataRresht"></p>
+        <p class="rresht-ora" id="oraRresht"></p>
+        <p class="rresht-salle" id="sallaHyrje" hidden></p>
+        <p class="kicker kicker-pas">Ftesa zyrtare pason</p>
+      </div>
+
+      <div class="numeratori" aria-hidden="true">
+        <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
+        <span class="pika">:</span>
+        <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
+      </div>
+    </section>
+
+    <main id="festa" hidden>
+      <section class="skena" id="skena" data-state="closed">
+        <div class="xhep">
+          <svg class="palosjet" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 100 L50 58 L100 100" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="0.35" />
+            <path d="M0 100 L50 58 L100 100" fill="none" stroke="rgba(30,28,16,.16)" stroke-width="0.2" />
+            <path d="M50 58 L50 100" fill="none" stroke="rgba(30,28,16,.12)" stroke-width="0.25" />
+          </svg>
+          <p class="hap-etikete">Hapeni ftesën</p>
+        </div>
+
+        <div class="kapak" id="kapak">
+          <svg class="dantel-svg" id="dantelSvg" aria-hidden="true"></svg>
+          <div class="leter">
+            <p class="kicker kicker-zarf">Një letër dashurie nga</p>
+            <p class="shkrim shkrim-zarf" id="emratLeter"></p>
+          </div>
+        </div>
+
+        <button class="vula" id="vula" type="button" aria-label="Hap zarfin">
+          <svg viewBox="0 0 120 156" aria-hidden="true">
+            <defs>
+              <radialGradient id="dyll" cx="38%" cy="32%" r="75%">
+                <stop offset="0%" stop-color="#fffdf8" />
+                <stop offset="58%" stop-color="#f4f0e7" />
+                <stop offset="100%" stop-color="#ddd3c2" />
+              </radialGradient>
+            </defs>
+            <ellipse cx="60" cy="78" rx="48" ry="62" fill="url(#dyll)" />
+            <ellipse cx="60" cy="78" rx="41" ry="54" fill="none" stroke="#d5cbb8" stroke-width="1.4" />
+            <ellipse cx="60" cy="78" rx="46" ry="59" fill="none" stroke="#efe8dc" stroke-width="1" />
+            <g fill="none" stroke="#c8beab" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M60 40 C60 54 51 62 51 74 C51 86 60 90 60 100" />
+              <path d="M60 66 C46 58 38 48 41 38 C50 46 57 58 60 66" />
+              <path d="M60 70 C74 60 84 50 79 38 C70 48 63 60 60 70" />
+              <path d="M52 92 C40 98 36 108 40 114" />
+              <path d="M68 94 C80 102 84 112 78 118" />
+            </g>
+            <text id="vulaTekst" x="60" y="128" text-anchor="middle" fill="#b3a894" font-size="13" font-family="Cormorant Garamond, Georgia, serif" letter-spacing="1.5"></text>
+          </svg>
+        </button>
+
+        <div class="kompozim" id="kompozim" aria-hidden="true">
+          <div class="kompozim-brenda">
+            <svg class="bozhure" viewBox="0 0 220 460" aria-hidden="true">
+              <g fill="none" stroke="#cfc4b2" stroke-width="1.7" stroke-linecap="round">
+                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(0 112 92)" />
+                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(36 112 92)" />
+                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(72 112 92)" />
+                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(108 112 92)" />
+                <ellipse cx="112" cy="92" rx="26" ry="40" transform="rotate(144 112 92)" />
+                <circle cx="112" cy="92" r="10" />
+                <circle cx="112" cy="92" r="4" />
+                <path d="M112 132 C108 200 118 280 104 430" />
+                <path d="M110 210 C70 188 42 206 52 232 C78 214 100 222 110 214" />
+                <path d="M108 250 C64 246 40 274 58 292 C82 270 102 272 110 258" />
+                <path d="M112 300 C156 286 186 314 172 338 C146 314 124 316 112 304" />
+              </g>
+            </svg>
+
+            <div class="kornize">
+              <div class="kornize-brenda">
+                <img id="foto" alt="" hidden />
+                <div class="monogram-foto" id="monogramFoto">
+                  <span id="inicFoto1"></span>
+                  <span id="inicFoto2"></span>
+                </div>
+              </div>
+            </div>
+
+            <article class="karte">
+              <div class="vija" aria-hidden="true"></div>
+              <div class="karte-brenda">
+                <p class="kicker">Ruajeni datën</p>
+                <div class="ndares" aria-hidden="true"><span></span><i></i><span></span></div>
+                <h2 class="shkrim shkrim-karte" id="emriNusja"></h2>
+                <p class="amp">&amp;</p>
+                <h2 class="shkrim shkrim-karte" id="emriDhendri"></h2>
+              </div>
+            </article>
+
+            <div class="zemer">
+              <svg viewBox="0 0 200 190" aria-hidden="true">
+                <path
+                  d="M100 168 C28 118 8 78 28 50 C48 24 80 28 100 56 C120 28 152 24 172 50 C192 78 172 118 100 168 Z"
+                  fill="#722333"
+                />
+                <path
+                  d="M100 154 C42 112 26 80 42 58 C56 40 80 44 100 66 C120 44 144 40 158 58 C174 80 158 112 100 154 Z"
+                  fill="none"
+                  stroke="rgba(255,236,236,.55)"
+                  stroke-width="1.4"
+                />
+              </svg>
+              <span id="dataZemer"></span>
+            </div>
+
+            <svg class="lule" viewBox="0 0 340 300" aria-hidden="true">
+              <g fill="none" stroke="#3e4a30" stroke-width="1.4" stroke-linecap="round">
+                <path d="M250 290 C246 220 270 170 250 120" />
+                <path d="M180 290 C176 230 150 180 168 130" />
+                <path d="M120 290 C130 230 100 190 112 150" />
+                <path d="M80 290 C70 240 96 200 84 160" />
+              </g>
+              <g fill="#31502e">
+                <ellipse cx="236" cy="176" rx="16" ry="7" transform="rotate(-28 236 176)" />
+                <ellipse cx="268" cy="150" rx="18" ry="7" transform="rotate(24 268 150)" />
+                <ellipse cx="146" cy="188" rx="16" ry="6" transform="rotate(30 146 188)" />
+                <ellipse cx="98" cy="206" rx="15" ry="6" transform="rotate(-36 98 206)" />
+              </g>
+              <path d="M168 150 C168 96 132 62 146 34 C176 62 206 96 196 156 Z" fill="#f7f4ef" />
+              <path d="M172 150 C174 96 168 62 162 38" fill="none" stroke="#e2d3a8" stroke-width="2" />
+              <path d="M250 148 C250 92 214 58 228 30 C258 58 292 98 278 154 Z" fill="#fbfaf7" />
+              <path d="M254 146 C256 96 250 64 244 40" fill="none" stroke="#e7d7ad" stroke-width="2" />
+              <path
+                d="M86 168 C86 140 118 128 132 148 C148 168 132 196 108 196 C84 196 74 180 86 168 Z"
+                fill="#722333"
+              />
+              <ellipse cx="112" cy="162" rx="4" ry="14" transform="rotate(-18 112 162)" fill="#e6c56a" />
+              <g fill="#f7f4ef" stroke="#e4d8c4" stroke-width="1">
+                <circle cx="70" cy="168" r="11" />
+                <circle cx="58" cy="184" r="9" />
+                <circle cx="84" cy="186" r="8" />
+                <circle cx="196" cy="196" r="10" />
+                <circle cx="214" cy="208" r="8" />
+                <circle cx="182" cy="210" r="7" />
+              </g>
+              <g fill="#e6c56a">
+                <circle cx="70" cy="168" r="2.4" />
+                <circle cx="58" cy="184" r="2" />
+                <circle cx="84" cy="186" r="1.8" />
+                <circle cx="196" cy="196" r="2.2" />
+                <circle cx="214" cy="208" r="1.8" />
+              </g>
+              <g fill="#9aab72">
+                <circle cx="40" cy="210" r="3" />
+                <circle cx="48" cy="198" r="2.2" />
+                <circle cx="230" cy="176" r="2.4" />
+                <circle cx="300" cy="150" r="2.6" />
+                <circle cx="286" cy="168" r="2" />
+                <circle cx="140" cy="150" r="2.2" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="mbledhja" id="mbledhja">
+        <div class="mbledhja-krem">
+          <div class="numeratori numeratori-vogel" aria-hidden="true">
+            <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
+          </div>
+          <button class="buton-adresa" id="hapAdresen" type="button">Na shkruani adresën tuaj këtu</button>
+          <p class="sebashku">Presim me padurim të festojmë së bashku.</p>
+        </div>
+
+        <div class="dashuri">
+          <svg class="kallinj" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <g fill="none" stroke="rgba(255,248,240,.38)" stroke-width="1.3">
+              <path d="M40 860 C50 640 20 520 48 300" />
+              <path d="M90 860 C80 620 120 500 96 280" />
+              <path d="M150 860 C160 600 130 480 158 260" />
+              <path d="M220 860 C200 640 240 520 214 340" />
+              <path d="M300 860 C310 620 270 500 292 240" />
+              <path d="M380 860 C360 600 410 500 386 320" />
+              <path d="M470 860 C490 640 440 520 468 300" />
+              <path d="M560 860 C540 600 590 480 562 250" />
+              <path d="M660 860 C680 640 630 520 658 310" />
+              <path d="M760 860 C740 600 800 500 770 280" />
+              <path d="M860 860 C880 640 830 520 858 300" />
+              <path d="M960 860 C940 620 990 500 962 270" />
+              <path d="M1060 860 C1080 640 1020 520 1050 320" />
+              <path d="M1160 860 C1140 600 1200 480 1170 260" />
+              <path d="M1260 860 C1280 640 1220 520 1254 300" />
+              <path d="M1360 860 C1340 620 1390 500 1368 280" />
+              <path d="M1420 860 C1410 640 1440 520 1416 340" />
+            </g>
+            <g fill="none" stroke="rgba(28,22,18,.28)" stroke-width="1.1">
+              <path d="M120 860 C140 700 90 620 110 480" />
+              <path d="M340 860 C320 680 370 600 348 460" />
+              <path d="M620 860 C640 700 590 600 616 470" />
+              <path d="M900 860 C880 690 940 590 910 450" />
+              <path d="M1180 860 C1200 700 1140 600 1172 480" />
+            </g>
+            <g fill="rgba(236,228,216,.45)">
+              <ellipse cx="48" cy="292" rx="7" ry="16" transform="rotate(-12 48 292)" />
+              <ellipse cx="158" cy="252" rx="6" ry="15" transform="rotate(10 158 252)" />
+              <ellipse cx="292" cy="232" rx="7" ry="17" transform="rotate(-8 292 232)" />
+              <ellipse cx="562" cy="242" rx="6" ry="16" transform="rotate(14 562 242)" />
+              <ellipse cx="770" cy="272" rx="7" ry="16" transform="rotate(-16 770 272)" />
+              <ellipse cx="962" cy="262" rx="6" ry="15" transform="rotate(8 962 262)" />
+              <ellipse cx="1170" cy="252" rx="7" ry="16" transform="rotate(-10 1170 252)" />
+              <ellipse cx="1368" cy="272" rx="6" ry="15" transform="rotate(12 1368 272)" />
+            </g>
+          </svg>
+
+          <p class="me-dashuri">Me dashuri</p>
+          <div class="ovale">
+            <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
+              <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+              <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+              <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
+            </svg>
+            <p class="ovale-emri"><span id="inic1"></span><span id="inic2"></span></p>
+            <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
+              <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+              <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+              <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
+            </svg>
+          </div>
+          <p class="pyetje">
+            Nëse keni ndonjë pyetje, na shkruani në email.
+            <a id="emailLink" href=""></a>
+          </p>
+          <button class="kthehu" id="kthehu" type="button">Kthehu te ftesa</button>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="dialogu" id="dialogu">
+      <form id="forma">
+        <p class="kicker">Adresa juaj</p>
+        <h3 class="shkrim shkrim-dialog">Na tregoni ku t'ju shkruajmë</h3>
+        <label>
+          Emri dhe mbiemri
+          <input id="emri" name="emri" autocomplete="name" required />
+        </label>
+        <label>
+          Adresa
+          <input id="adresa" name="adresa" autocomplete="street-address" required />
+        </label>
+        <label>
+          Qyteti
+          <input id="qyteti" name="qyteti" autocomplete="address-level2" />
+        </label>
+        <label>
+          Telefoni
+          <input id="telefoni" name="telefoni" type="tel" autocomplete="tel" />
+        </label>
+        <label>
+          Sa persona
+          <input id="persona" name="persona" type="number" min="1" max="20" value="1" />
+        </label>
+        <label>
+          Një mesazh, nëse doni
+          <textarea id="mesazh" name="mesazh" rows="3"></textarea>
+        </label>
+        <div class="veprime">
+          <button class="anulo" id="mbyll" type="button">Mbyll</button>
+          <button class="buton-adresa buton-vogel" type="submit">Dërgo</button>
+        </div>
+      </form>
+      <div class="faleminderit" id="faleminderit" hidden>
+        <p class="shkrim shkrim-dialog">Faleminderit</p>
+        <p class="faleminderit-tekst">Adresa juaj u shënua. Do t'ju shkruajmë së shpejti.</p>
+        <button class="buton-adresa buton-vogel" id="mbyllPas" type="button">Mbyll</button>
+      </div>
+    </dialog>
+
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
