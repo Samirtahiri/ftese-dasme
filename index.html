@@ -28,7 +28,16 @@
             <path d="M0 100 L50 58 L100 100" fill="none" stroke="rgba(30,28,16,.16)" stroke-width="0.2" />
             <path d="M50 58 L50 100" fill="none" stroke="rgba(30,28,16,.12)" stroke-width="0.25" />
           </svg>
-          <p class="hap-etikete">Prekeni vulën</p>
+          <div class="vula-poshte" aria-hidden="true">
+            <svg viewBox="0 0 120 156">
+              <ellipse cx="60" cy="78" rx="46" ry="60" fill="#f6f2ea" />
+              <ellipse cx="60" cy="78" rx="39" ry="52" fill="none" stroke="#d9d0c0" stroke-width="1.4" />
+              <path d="M60 48 C60 62 52 70 52 82 C52 94 60 98 60 108" fill="none" stroke="#cbbfae" stroke-width="1.3" />
+              <path d="M60 74 C48 66 40 56 43 46 C52 54 58 66 60 74" fill="none" stroke="#cbbfae" stroke-width="1.3" />
+              <path d="M60 78 C74 68 84 58 79 46 C70 56 63 68 60 78" fill="none" stroke="#cbbfae" stroke-width="1.3" />
+            </svg>
+          </div>
+          <p class="hap-etikete">Hapeni ftesën</p>
           <div class="numeratori numeratori-zarf" aria-hidden="true">
             <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
             <span class="pika">:</span>
@@ -178,14 +187,21 @@
 
       <section class="fund" id="fund">
         <div class="fund-krem">
-          <p class="kicker">Ju ftojmë</p>
-          <h2 class="shkrim shkrim-fund" id="emratFund"></h2>
-          <div class="ndares" aria-hidden="true"><span></span><i></i><span></span></div>
-          <p class="rresht-data" id="dataRresht"></p>
-          <p class="rresht-ora" id="oraRresht"></p>
-          <p class="rresht-vend" id="vendi"></p>
-          <p class="rresht-salle" id="sallaHyrje" hidden></p>
+          <div class="numeratori numeratori-fund" aria-hidden="true">
+            <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
+          </div>
           <p class="sebashku">Presim me padurim të festojmë së bashku.</p>
+          <p class="rresht-data" id="dataRresht" hidden></p>
+          <p class="rresht-ora" id="oraRresht" hidden></p>
+          <p class="rresht-vend" id="vendi" hidden></p>
+          <p class="rresht-salle" id="sallaHyrje" hidden></p>
+          <h2 class="shkrim shkrim-fund" id="emratFund" hidden></h2>
         </div>
 
         <div class="dashuri">
