@@ -17,66 +17,10 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%23f3f0ea' width='64' height='64'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='28' font-family='Georgia' fill='%236a7048'%3EE%3C/text%3E%3C/svg%3E"
     />
   </head>
-  <body class="is-intro">
+  <body class="is-envelope">
     <div class="grain" aria-hidden="true"></div>
 
-    <section class="hyrje" id="hyrje">
-      <div class="shirit" aria-hidden="true"></div>
-      <svg class="gjeth" viewBox="0 0 220 520" aria-hidden="true">
-        <g fill="none" stroke-linecap="round">
-          <path d="M70 0 C78 70 58 130 74 210 C86 280 52 360 68 520" stroke="#7f8b58" stroke-width="1.4" />
-          <path d="M118 0 C112 80 132 150 118 240 C104 320 138 400 120 520" stroke="#6d784c" stroke-width="1.5" />
-          <path d="M164 0 C170 60 150 120 166 200 C178 270 150 340 162 460" stroke="#8b9664" stroke-width="1.3" />
-        </g>
-        <g fill="#8d9862">
-          <ellipse cx="86" cy="78" rx="6" ry="16" transform="rotate(18 86 78)" />
-          <ellipse cx="62" cy="128" rx="5" ry="14" transform="rotate(-24 62 128)" />
-          <ellipse cx="92" cy="188" rx="6" ry="15" transform="rotate(20 92 188)" />
-          <ellipse cx="60" cy="250" rx="5" ry="13" transform="rotate(-16 60 250)" />
-          <ellipse cx="138" cy="92" rx="6" ry="16" transform="rotate(-20 138 92)" />
-          <ellipse cx="148" cy="156" rx="5" ry="14" transform="rotate(22 148 156)" />
-          <ellipse cx="100" cy="214" rx="6" ry="15" transform="rotate(-18 100 214)" />
-          <ellipse cx="146" cy="286" rx="5" ry="14" transform="rotate(16 146 286)" />
-          <ellipse cx="176" cy="74" rx="5" ry="14" transform="rotate(24 176 74)" />
-          <ellipse cx="150" cy="132" rx="5" ry="13" transform="rotate(-14 150 132)" />
-          <ellipse cx="184" cy="188" rx="6" ry="15" transform="rotate(18 184 188)" />
-          <ellipse cx="148" cy="246" rx="5" ry="13" transform="rotate(-22 148 246)" />
-        </g>
-        <g fill="#6e7948">
-          <ellipse cx="78" cy="108" rx="4" ry="11" transform="rotate(40 78 108)" />
-          <ellipse cx="126" cy="124" rx="4" ry="12" transform="rotate(-36 126 124)" />
-          <ellipse cx="170" cy="118" rx="4" ry="11" transform="rotate(32 170 118)" />
-          <ellipse cx="108" cy="300" rx="4" ry="12" transform="rotate(28 108 300)" />
-          <ellipse cx="156" cy="330" rx="4" ry="11" transform="rotate(-30 156 330)" />
-        </g>
-      </svg>
-
-      <div class="hyrje-qender">
-        <p class="kicker">Na takoni në</p>
-        <h1 class="shkrim" id="vendi"></h1>
-        <button class="play" id="play" type="button" aria-label="Hap ftesën">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="34,18 34,82 84,50" fill="#ffffff" />
-          </svg>
-        </button>
-        <p class="rresht-data" id="dataRresht"></p>
-        <p class="rresht-ora" id="oraRresht"></p>
-        <p class="rresht-salle" id="sallaHyrje" hidden></p>
-        <p class="kicker kicker-pas">Ftesa zyrtare pason</p>
-      </div>
-
-      <div class="numeratori" aria-hidden="true">
-        <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
-        <span class="pika">:</span>
-        <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
-        <span class="pika">:</span>
-        <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
-        <span class="pika">:</span>
-        <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
-      </div>
-    </section>
-
-    <main id="festa" hidden>
+    <main id="festa">
       <section class="skena" id="skena" data-state="closed">
         <div class="xhep">
           <svg class="palosjet" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -84,7 +28,16 @@
             <path d="M0 100 L50 58 L100 100" fill="none" stroke="rgba(30,28,16,.16)" stroke-width="0.2" />
             <path d="M50 58 L50 100" fill="none" stroke="rgba(30,28,16,.12)" stroke-width="0.25" />
           </svg>
-          <p class="hap-etikete">Hapeni ftesën</p>
+          <p class="hap-etikete">Prekeni vulën</p>
+          <div class="numeratori numeratori-zarf" aria-hidden="true">
+            <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
+            <span class="pika">:</span>
+            <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
+          </div>
         </div>
 
         <div class="kapak" id="kapak">
@@ -223,18 +176,15 @@
         </div>
       </section>
 
-      <section class="mbledhja" id="mbledhja">
-        <div class="mbledhja-krem">
-          <div class="numeratori numeratori-vogel" aria-hidden="true">
-            <div class="njesi"><strong data-njesi="d">0</strong><span>Ditë</span></div>
-            <span class="pika">:</span>
-            <div class="njesi"><strong data-njesi="h">00</strong><span>Orë</span></div>
-            <span class="pika">:</span>
-            <div class="njesi"><strong data-njesi="m">00</strong><span>Minuta</span></div>
-            <span class="pika">:</span>
-            <div class="njesi"><strong data-njesi="s">00</strong><span>Sekonda</span></div>
-          </div>
-          <button class="buton-adresa" id="hapAdresen" type="button">Na shkruani adresën tuaj këtu</button>
+      <section class="fund" id="fund">
+        <div class="fund-krem">
+          <p class="kicker">Ju ftojmë</p>
+          <h2 class="shkrim shkrim-fund" id="emratFund"></h2>
+          <div class="ndares" aria-hidden="true"><span></span><i></i><span></span></div>
+          <p class="rresht-data" id="dataRresht"></p>
+          <p class="rresht-ora" id="oraRresht"></p>
+          <p class="rresht-vend" id="vendi"></p>
+          <p class="rresht-salle" id="sallaHyrje" hidden></p>
           <p class="sebashku">Presim me padurim të festojmë së bashku.</p>
         </div>
 
@@ -278,68 +228,28 @@
             </g>
           </svg>
 
-          <p class="me-dashuri">Me dashuri</p>
-          <div class="ovale">
-            <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
-              <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
-              <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
-              <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
-            </svg>
-            <p class="ovale-emri"><span id="inic1"></span><span id="inic2"></span></p>
-            <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
-              <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
-              <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
-              <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
-            </svg>
+          <div class="dashuri-brenda">
+            <p class="me-dashuri">Me dashuri</p>
+            <div class="ovale">
+              <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
+                <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+                <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+                <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
+              </svg>
+              <p class="ovale-emri"><span id="inic1"></span><span id="inic2"></span></p>
+              <svg class="ovale-lule" viewBox="0 0 64 24" aria-hidden="true">
+                <path d="M4 12 H26" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+                <path d="M38 12 H60" stroke="rgba(255,255,255,.8)" stroke-width="1" />
+                <circle cx="32" cy="12" r="3.2" fill="none" stroke="rgba(255,255,255,.85)" />
+              </svg>
+            </div>
+            <p class="emrat-poshte" id="emratPoshte"></p>
+            <p class="data-poshte" id="dataPoshte"></p>
+            <button class="kthehu" id="kthehu" type="button">Kthehu te zarfi</button>
           </div>
-          <p class="pyetje">
-            Nëse keni ndonjë pyetje, na shkruani në email.
-            <a id="emailLink" href=""></a>
-          </p>
-          <button class="kthehu" id="kthehu" type="button">Kthehu te ftesa</button>
         </div>
       </section>
     </main>
-
-    <dialog class="dialogu" id="dialogu">
-      <form id="forma">
-        <p class="kicker">Adresa juaj</p>
-        <h3 class="shkrim shkrim-dialog">Na tregoni ku t'ju shkruajmë</h3>
-        <label>
-          Emri dhe mbiemri
-          <input id="emri" name="emri" autocomplete="name" required />
-        </label>
-        <label>
-          Adresa
-          <input id="adresa" name="adresa" autocomplete="street-address" required />
-        </label>
-        <label>
-          Qyteti
-          <input id="qyteti" name="qyteti" autocomplete="address-level2" />
-        </label>
-        <label>
-          Telefoni
-          <input id="telefoni" name="telefoni" type="tel" autocomplete="tel" />
-        </label>
-        <label>
-          Sa persona
-          <input id="persona" name="persona" type="number" min="1" max="20" value="1" />
-        </label>
-        <label>
-          Një mesazh, nëse doni
-          <textarea id="mesazh" name="mesazh" rows="3"></textarea>
-        </label>
-        <div class="veprime">
-          <button class="anulo" id="mbyll" type="button">Mbyll</button>
-          <button class="buton-adresa buton-vogel" type="submit">Dërgo</button>
-        </div>
-      </form>
-      <div class="faleminderit" id="faleminderit" hidden>
-        <p class="shkrim shkrim-dialog">Faleminderit</p>
-        <p class="faleminderit-tekst">Adresa juaj u shënua. Do t'ju shkruajmë së shpejti.</p>
-        <button class="buton-adresa buton-vogel" id="mbyllPas" type="button">Mbyll</button>
-      </div>
-    </dialog>
 
     <script src="config.js"></script>
     <script src="main.js"></script>

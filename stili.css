@@ -39,7 +39,6 @@ body {
   overflow-x: hidden;
 }
 
-body.is-intro,
 body.is-envelope:not(.is-open) {
   overflow: hidden;
   height: 100vh;
@@ -92,81 +91,9 @@ button {
   letter-spacing: -0.02em;
 }
 
-.hyrje {
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.7), transparent 46%),
-    var(--krem);
-  transition: opacity 0.8s ease;
-}
-
-body.po-largohet .hyrje {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.shirit {
-  position: absolute;
-  top: 0;
-  left: 7%;
-  right: 7%;
-  height: 22px;
-  background: linear-gradient(180deg, #4e5334, #6a6f46);
-  border-radius: 0 0 6px 6px;
-}
-
-.gjeth {
-  position: absolute;
-  top: -8px;
-  right: max(16px, 5vw);
-  width: min(190px, 30vw);
-  height: auto;
-  pointer-events: none;
-}
-
-.hyrje-qender {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10vh 24px 2vh;
-}
-
-.hyrje-qender .shkrim {
-  margin-top: 8px;
-}
-
-.play {
-  width: 132px;
-  height: 112px;
-  margin: 6px 0 2px;
-  border: 0;
-  background: transparent;
-  display: grid;
-  place-items: center;
-  padding: 0;
-}
-
-.play svg {
-  width: 78px;
-  height: 78px;
-  filter: drop-shadow(0 8px 14px rgba(40, 36, 24, 0.16));
-  transition: transform 0.35s ease;
-}
-
-.play:hover svg,
-.play:focus-visible svg {
-  transform: scale(1.06);
-}
-
 .rresht-data,
 .rresht-ora,
+.rresht-vend,
 .rresht-salle {
   margin: 0;
   font-size: 16px;
@@ -180,14 +107,11 @@ body.po-largohet .hyrje {
 }
 
 .rresht-ora,
+.rresht-vend,
 .rresht-salle {
   margin-top: 10px;
   font-size: 15px;
   letter-spacing: 0.2em;
-}
-
-.kicker-pas {
-  margin-top: 34px;
 }
 
 .numeratori {
@@ -248,8 +172,8 @@ body.po-largohet .hyrje {
     linear-gradient(180deg, #7b8054 0%, #6a6f47 42%, #5e6340 100%);
   clip-path: polygon(0 0, 50% 0, 100% 0, 100% 100%, 0 100%);
   transition:
-    height 1.15s cubic-bezier(0.4, 0, 0.2, 1) 0.4s,
-    clip-path 1.15s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    height 1.35s cubic-bezier(0.45, 0.02, 0.2, 1) 0.28s,
+    clip-path 1.35s cubic-bezier(0.45, 0.02, 0.2, 1) 0.28s;
   box-shadow: inset 0 0 80px rgba(40, 36, 16, 0.12);
 }
 
@@ -263,7 +187,8 @@ body.po-largohet .hyrje {
 }
 
 .skena[data-state="open"] .palosjet,
-.skena[data-state="open"] .hap-etikete {
+.skena[data-state="open"] .hap-etikete,
+.skena[data-state="open"] .numeratori-zarf {
   opacity: 0;
 }
 
@@ -279,7 +204,17 @@ body.po-largohet .hyrje {
   font-weight: 500;
   letter-spacing: 0.46em;
   text-transform: uppercase;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.45s ease;
+}
+
+.numeratori-zarf {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5vh;
+  z-index: 3;
+  padding: 0;
+  transition: opacity 0.45s ease;
 }
 
 .kapak {
@@ -296,11 +231,11 @@ body.po-largohet .hyrje {
   transform-origin: center top;
   backface-visibility: hidden;
   cursor: pointer;
-  transition: transform 1.15s cubic-bezier(0.55, 0.05, 0.25, 1), opacity 0.4s ease 0.72s;
+  transition: transform 1.45s cubic-bezier(0.62, 0.02, 0.15, 1), opacity 0.5s ease 0.95s;
 }
 
 .skena[data-state="open"] .kapak {
-  transform: rotateX(188deg);
+  transform: rotateX(178deg);
   opacity: 0;
   pointer-events: none;
 }
@@ -343,7 +278,24 @@ body.po-largohet .hyrje {
   background: transparent;
   transform: translate(-50%, -42%);
   filter: drop-shadow(0 12px 14px rgba(40, 36, 18, 0.28));
-  transition: transform 1.05s cubic-bezier(0.55, 0.05, 0.25, 1), opacity 0.35s ease 0.45s;
+  cursor: pointer;
+  animation: fryme 2.6s ease-in-out infinite;
+  transition: transform 0.9s cubic-bezier(0.62, 0.02, 0.2, 1), opacity 0.4s ease 0.35s;
+}
+
+.vula.po-shtyp {
+  animation: none;
+  transform: translate(-50%, -42%) scale(0.9);
+}
+
+@keyframes fryme {
+  0%,
+  100% {
+    transform: translate(-50%, -42%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -46%) scale(1.045);
+  }
 }
 
 .vula svg {
@@ -353,7 +305,8 @@ body.po-largohet .hyrje {
 }
 
 .skena[data-state="open"] .vula {
-  transform: translate(-50%, -130%) scale(0.86);
+  animation: none;
+  transform: translate(-50%, -160%) scale(0.72);
   opacity: 0;
   pointer-events: none;
 }
@@ -367,9 +320,9 @@ body.po-largohet .hyrje {
   align-items: center;
   padding: 3vh 16px 0;
   opacity: 0;
-  transform: translateY(42px);
+  transform: translateY(54px);
   pointer-events: none;
-  transition: opacity 0.95s ease 0.35s, transform 1.15s cubic-bezier(0.16, 0.84, 0.32, 1) 0.3s;
+  transition: opacity 1.05s ease 0.42s, transform 1.25s cubic-bezier(0.16, 0.84, 0.28, 1) 0.38s;
 }
 
 .skena[data-state="open"] .kompozim {
@@ -382,6 +335,46 @@ body.po-largohet .hyrje {
   position: relative;
   width: min(980px, 96vw);
   height: min(660px, 84vh);
+}
+
+.bozhure,
+.kornize,
+.karte,
+.zemer,
+.lule {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.85s ease, translate 1s cubic-bezier(0.16, 0.84, 0.28, 1);
+}
+
+.skena[data-state="open"] .bozhure {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0.85s;
+}
+
+.skena[data-state="open"] .kornize {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0.55s;
+}
+
+.skena[data-state="open"] .karte {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0.4s;
+}
+
+.skena[data-state="open"] .zemer {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0.95s;
+}
+
+.skena[data-state="open"] .lule {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 1.05s;
 }
 
 .bozhure {
@@ -554,46 +547,48 @@ body.po-largohet .hyrje {
   filter: drop-shadow(0 10px 12px rgba(40, 36, 20, 0.12));
 }
 
-.mbledhja-krem {
+.fund {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+body.is-open .fund {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fund-krem {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.65), transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.75), transparent 48%),
     var(--krem);
   text-align: center;
-  padding: 86px 20px 92px;
+  padding: 92px 24px 88px;
 }
 
-.numeratori-vogel {
-  padding: 0 0 54px;
+.shkrim-fund {
+  margin-top: 10px;
+  font-size: clamp(56px, 7vw, 92px);
 }
 
-.numeratori-vogel .njesi strong {
-  font-size: 28px;
+.fund-krem .ndares {
+  margin: 22px auto 26px;
 }
 
-.buton-adresa {
-  border: 0;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #74794d, #5d6240);
-  color: #f6f3ea;
-  padding: 22px 54px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  box-shadow: 0 12px 28px rgba(60, 58, 28, 0.16);
-}
-
-.buton-adresa:hover {
-  filter: brightness(1.06);
+.fund-krem .rresht-data,
+.fund-krem .rresht-ora,
+.fund-krem .rresht-vend,
+.fund-krem .rresht-salle {
+  margin-top: 8px;
 }
 
 .sebashku {
-  max-width: 18em;
-  margin: 58px auto 0;
-  font-size: 16px;
+  max-width: 16em;
+  margin: 42px auto 0;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  line-height: 1.8;
+  letter-spacing: 0.22em;
+  line-height: 1.9;
   text-transform: uppercase;
 }
 
@@ -601,12 +596,22 @@ body.po-largohet .hyrje {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #f7f4ee;
-  padding: 78px 20px 56px;
+  padding: 72px 20px;
   background:
-    radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.16), transparent 36%),
-    linear-gradient(180deg, #b3a89c 0%, #7d736a 38%, #3c3834 100%);
+    radial-gradient(ellipse at 50% 46%, rgba(255, 244, 230, 0.22), transparent 34%),
+    linear-gradient(180deg, #c4b6a6 0%, #8a7d72 34%, #4a433d 68%, #2a2623 100%);
+}
+
+.dashuri-brenda {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 92vw);
+  padding: 18px 12px 8px;
 }
 
 .dashuri::after {
@@ -627,7 +632,8 @@ body.po-largohet .hyrje {
 
 .me-dashuri,
 .ovale,
-.pyetje,
+.emrat-poshte,
+.data-poshte,
 .kthehu {
   position: relative;
   z-index: 1;
@@ -641,17 +647,20 @@ body.po-largohet .hyrje {
 }
 
 .ovale {
-  width: 210px;
-  height: 280px;
-  margin: 28px auto 8px;
-  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  width: 230px;
+  height: 300px;
+  margin: 26px auto 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: inset 0 0 0 7px transparent, inset 0 0 0 8px rgba(255, 255, 255, 0.55);
+  background: radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.08), transparent 68%);
+  box-shadow:
+    inset 0 0 0 8px rgba(255, 255, 255, 0.28),
+    0 18px 40px rgba(20, 14, 10, 0.18);
 }
 
 .ovale-lule {
@@ -674,26 +683,22 @@ body.po-largohet .hyrje {
   margin-left: -12px;
 }
 
-.pyetje {
-  max-width: 34em;
-  margin: 18px auto 0;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  line-height: 2;
+.emrat-poshte {
+  margin: 8px 0 0;
+  font-style: italic;
+  font-size: clamp(36px, 5vw, 48px);
+  line-height: 1;
+}
+
+.data-poshte {
+  margin: 16px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
-.pyetje a {
-  display: inline-block;
-  margin-top: 8px;
-  color: inherit;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  text-underline-offset: 4px;
-}
-
 .kthehu {
-  margin-top: 26px;
+  margin-top: 34px;
   border: 0;
   background: none;
   color: inherit;
@@ -701,90 +706,8 @@ body.po-largohet .hyrje {
   letter-spacing: 0.32em;
   text-transform: uppercase;
   text-decoration: underline;
-  text-underline-offset: 6px;
-}
-
-.dialogu {
-  width: min(480px, calc(100% - 28px));
-  max-height: calc(100vh - 32px);
-  overflow: auto;
-  border: 0;
-  border-radius: 22px;
-  padding: 32px 28px 26px;
-  background: #f7f4ee;
-  color: var(--bojë);
-  box-shadow: 0 24px 80px rgba(20, 16, 10, 0.28);
-}
-
-.dialogu::backdrop {
-  background: rgba(28, 26, 20, 0.48);
-}
-
-.shkrim-dialog {
-  font-size: clamp(36px, 6vw, 48px);
-  margin: 8px 0 22px;
-}
-
-.dialogu label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 14px;
-  text-align: left;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.dialogu input,
-.dialogu textarea {
-  border: 0;
-  border-bottom: 1px solid #d5ccbc;
-  background: transparent;
-  padding: 8px 2px 10px;
-  font-size: 18px;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--bojë);
-  resize: vertical;
-}
-
-.dialogu input:focus,
-.dialogu textarea:focus {
-  outline: none;
-  border-bottom-color: var(--ulliri);
-}
-
-.veprime {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.anulo {
-  border: 0;
-  background: transparent;
-  color: var(--bojë);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-.buton-vogel {
-  padding: 14px 26px;
-  font-size: 13px;
-}
-
-.faleminderit {
-  text-align: center;
-  padding: 12px 8px 6px;
-}
-
-.faleminderit-tekst {
-  margin: 0 0 22px;
-  font-size: 20px;
-  line-height: 1.45;
+  text-underline-offset: 7px;
+  cursor: pointer;
 }
 
 @media (max-width: 860px) {
@@ -826,8 +749,18 @@ body.po-largohet .hyrje {
     top: calc(var(--maja) + 86px);
   }
 
+  .leter {
+    top: 28%;
+    width: 86%;
+  }
+
+  .kicker-zarf {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
   .shkrim-zarf {
-    font-size: clamp(44px, 12vw, 68px);
+    font-size: clamp(34px, 8.2vw, 46px);
   }
 
   .skena[data-state="open"] {
@@ -911,11 +844,8 @@ body.po-largohet .hyrje {
     margin-top: -18px;
   }
 
-  .buton-adresa {
-    padding: 18px 22px;
-    letter-spacing: 0.14em;
-    font-size: 13px;
-    max-width: 100%;
+  .shkrim-fund {
+    font-size: clamp(46px, 12vw, 68px);
   }
 
   .monogram-foto span,

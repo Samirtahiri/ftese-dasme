@@ -1,9 +1,9 @@
 // Ndrysho vetëm këto të dhëna. Ruaj skedarin dhe rihap faqen.
 window.FTESA = {
-  nusja: "Era",
-  dhendri: "Arben",
-  nusjaPlote: "Era Krasniqi",
-  dhendriPlote: "Arben Hoxha",
+  nusja: "Samir",
+  dhendri: "Barbara",
+  nusjaPlote: "Samir",
+  dhendriPlote: "Barbara",
   vendi: "Prishtinë",
   salla: "",
   // Data dhe ora lokale, pa shkronjën Z në fund.

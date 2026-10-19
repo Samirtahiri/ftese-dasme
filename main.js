@@ -1,15 +1,15 @@
 (function () {
   const cfg = Object.assign(
     {
-      nusja: "Era",
-      dhendri: "Arben",
-      nusjaPlote: "Era Krasniqi",
-      dhendriPlote: "Arben Hoxha",
+      nusja: "Samir",
+      dhendri: "Barbara",
+      nusjaPlote: "Samir",
+      dhendriPlote: "Barbara",
       vendi: "Prishtinë",
       salla: "",
       data: "2027-05-22T12:30:00",
       oraTekst: "Dymbëdhjetë e tridhjetë pasdite",
-      email: "dasma@example.com",
+      email: "",
       foto: "",
     },
     window.FTESA || {}
@@ -36,10 +36,12 @@
   const iniciale = (emri) => (emri ? [...emri.trim()][0].toLocaleUpperCase("sq-AL") : "");
   const inicN = iniciale(cfg.nusja);
   const inicD = iniciale(cfg.dhendri);
+  const cifti = `${cfg.nusja} & ${cfg.dhendri}`;
 
-  document.title = `${cfg.nusja} & ${cfg.dhendri} · Ftesë dasme`;
-  document.getElementById("vendi").textContent = cfg.vendi;
-  document.getElementById("emratLeter").textContent = `${cfg.nusja} & ${cfg.dhendri}`;
+  document.title = `${cifti} · Ftesë dasme`;
+  document.getElementById("emratLeter").textContent = cifti;
+  document.getElementById("emratFund").textContent = cifti;
+  document.getElementById("emratPoshte").textContent = cifti;
   document.getElementById("emriNusja").textContent = cfg.nusjaPlote;
   document.getElementById("emriDhendri").textContent = cfg.dhendriPlote;
   document.getElementById("vulaTekst").textContent = `${inicN} & ${inicD}`;
@@ -47,19 +49,18 @@
   document.getElementById("inicFoto2").textContent = inicD;
   document.getElementById("inic1").textContent = inicN;
   document.getElementById("inic2").textContent = inicD;
-
-  const emailLink = document.getElementById("emailLink");
-  emailLink.textContent = cfg.email;
-  emailLink.href = `mailto:${cfg.email}`;
+  document.getElementById("vendi").textContent = cfg.vendi;
+  document.getElementById("oraRresht").textContent = cfg.oraTekst.toLocaleUpperCase("sq-AL");
 
   if (dataOK) {
     const rresht = `${dite[data.getDay()]}, ${data.getDate()} ${muaj[data.getMonth()]} ${data.getFullYear()}`;
-    document.getElementById("dataRresht").textContent = rresht.toLocaleUpperCase("sq-AL");
+    const rreshtMadh = rresht.toLocaleUpperCase("sq-AL");
+    document.getElementById("dataRresht").textContent = rreshtMadh;
     const dd = String(data.getDate()).padStart(2, "0");
     const mm = String(data.getMonth() + 1).padStart(2, "0");
     document.getElementById("dataZemer").textContent = `${dd}.${mm}.${data.getFullYear()}`;
+    document.getElementById("dataPoshte").textContent = `${rreshtMadh} · ${cfg.vendi.toLocaleUpperCase("sq-AL")}`;
   }
-  document.getElementById("oraRresht").textContent = cfg.oraTekst.toLocaleUpperCase("sq-AL");
 
   if (cfg.salla) {
     const salla = document.getElementById("sallaHyrje");
@@ -145,107 +146,34 @@
     svg.innerHTML = pjeset.join("");
   }
 
-  const hyrje = document.getElementById("hyrje");
-  const festa = document.getElementById("festa");
   const skena = document.getElementById("skena");
   const kompozim = document.getElementById("kompozim");
-  const play = document.getElementById("play");
   const vula = document.getElementById("vula");
   const menjehere = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let nisur = false;
   let uHap = false;
 
   function hapZarfin() {
     if (uHap) return;
     uHap = true;
-    skena.dataset.state = "open";
-    kompozim.setAttribute("aria-hidden", "false");
-    const vonesa = menjehere ? 0 : 1500;
-    window.setTimeout(() => document.body.classList.add("is-open"), vonesa);
-  }
-
-  function nisHapjen() {
-    if (nisur) return;
-    nisur = true;
-    play.disabled = true;
-    festa.hidden = false;
-
-    if (menjehere) {
-      hyrje.hidden = true;
-      document.body.classList.remove("is-intro");
-      document.body.classList.add("is-envelope", "is-open");
-      vendosDantellen();
-      hapZarfin();
-      return;
-    }
-
-    window.requestAnimationFrame(() => {
-      vendosDantellen();
-      document.body.classList.add("po-largohet");
-    });
+    vula.classList.add("po-shtyp");
     window.setTimeout(() => {
-      hyrje.hidden = true;
-      document.body.classList.remove("is-intro", "po-largohet");
-      document.body.classList.add("is-envelope");
-      vendosDantellen();
-      window.setTimeout(hapZarfin, 1050);
-    }, 820);
+      skena.dataset.state = "open";
+      kompozim.setAttribute("aria-hidden", "false");
+      window.setTimeout(() => document.body.classList.add("is-open"), menjehere ? 0 : 1280);
+    }, menjehere ? 0 : 140);
   }
 
-  play.addEventListener("click", nisHapjen);
-  vula.addEventListener("click", hapZarfin);
+  vula.addEventListener("click", (event) => {
+    event.stopPropagation();
+    hapZarfin();
+  });
   document.getElementById("kapak").addEventListener("click", hapZarfin);
+  document.querySelector(".xhep").addEventListener("click", hapZarfin);
   window.addEventListener("resize", vendosDantellen);
-
-  const dialogu = document.getElementById("dialogu");
-  const forma = document.getElementById("forma");
-  const faleminderit = document.getElementById("faleminderit");
-
-  function hapDialogun() {
-    forma.hidden = false;
-    faleminderit.hidden = true;
-    if (typeof dialogu.showModal === "function") dialogu.showModal();
+  window.addEventListener("load", vendosDantellen);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(vendosDantellen);
   }
-
-  function mbyllDialogun() {
-    dialogu.close();
-  }
-
-  document.getElementById("hapAdresen").addEventListener("click", hapDialogun);
-  document.getElementById("mbyll").addEventListener("click", mbyllDialogun);
-  document.getElementById("mbyllPas").addEventListener("click", mbyllDialogun);
-  dialogu.addEventListener("click", (event) => {
-    if (event.target === dialogu) mbyllDialogun();
-  });
-
-  forma.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const teDhenat = Object.fromEntries(new FormData(forma).entries());
-    try {
-      const ruajtura = JSON.parse(localStorage.getItem("ftesa-dasme-adresat") || "[]");
-      ruajtura.push(Object.assign({}, teDhenat, { koha: new Date().toISOString() }));
-      localStorage.setItem("ftesa-dasme-adresat", JSON.stringify(ruajtura));
-    } catch (err) {
-      /* shfletuesi mund të mos lejojë ruajtjen lokale */
-    }
-
-    if (cfg.email && cfg.email.includes("@")) {
-      const trupi = [
-        `Emri: ${teDhenat.emri || ""}`,
-        `Adresa: ${teDhenat.adresa || ""}`,
-        `Qyteti: ${teDhenat.qyteti || ""}`,
-        `Telefoni: ${teDhenat.telefoni || ""}`,
-        `Persona: ${teDhenat.persona || ""}`,
-        `Mesazh: ${teDhenat.mesazh || ""}`,
-      ].join("\n");
-      const subjekti = encodeURIComponent(`Adresa për dasmën e ${cfg.nusja} dhe ${cfg.dhendri}`);
-      window.location.href = `mailto:${cfg.email}?subject=${subjekti}&body=${encodeURIComponent(trupi)}`;
-    }
-
-    forma.hidden = true;
-    faleminderit.hidden = false;
-    forma.reset();
-  });
 
   document.getElementById("kthehu").addEventListener("click", () => {
     document.getElementById("skena").scrollIntoView({ behavior: menjehere ? "auto" : "smooth" });

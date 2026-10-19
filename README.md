@@ -10,9 +10,6 @@ Të gjitha të dhënat janë te `config.js`.
 - `vendi` dhe `salla` (lëre sallën bosh nëse nuk e përdor)
 - `data` në formën `2027-05-22T12:30:00`
 - `oraTekst` siç do të lexohet në ftesë
-- `email` ku të ftuarit e dërgojnë adresën
 - `foto` nëse vendos një `foto.jpg` pranë `index.html`
 
-Pastaj rihap `index.html`.
-
-Adresat që plotësohen në formular hapin programin e email-it të mysafirit dhe ruhen edhe në atë shfletues.
+Pastaj rihap `index.html`. Zarfi hapet kur preket vula.
