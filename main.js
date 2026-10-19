@@ -7,7 +7,7 @@
       dhendriPlote: "Arben Hoxha",
       vendi: "Prishtinë",
       salla: "",
-      data: "2027-06-21T12:30:00",
+      data: "2027-05-22T12:30:00",
       oraTekst: "Dymbëdhjetë e tridhjetë pasdite",
       email: "dasma@example.com",
       foto: "",

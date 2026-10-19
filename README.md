@@ -8,7 +8,7 @@ Të gjitha të dhënat janë te `config.js`.
 
 - `nusja`, `dhendri` dhe format e plota të emrave
 - `vendi` dhe `salla` (lëre sallën bosh nëse nuk e përdor)
-- `data` në formën `2027-06-21T12:30:00`
+- `data` në formën `2027-05-22T12:30:00`
 - `oraTekst` siç do të lexohet në ftesë
 - `email` ku të ftuarit e dërgojnë adresën
 - `foto` nëse vendos një `foto.jpg` pranë `index.html`

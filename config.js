@@ -7,7 +7,7 @@ window.FTESA = {
   vendi: "Prishtinë",
   salla: "",
   // Data dhe ora lokale, pa shkronjën Z në fund.
-  data: "2027-06-21T12:30:00",
+  data: "2027-05-22T12:30:00",
   oraTekst: "Dymbëdhjetë e tridhjetë pasdite",
   email: "dasma@example.com",
   // Vendos "foto.jpg" në këtë dosje, pastaj shkruaj emrin këtu. Lëre bosh nëse s'ke foto.
